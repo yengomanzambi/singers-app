@@ -1,6 +1,5 @@
 import connectDB from "@/utils/mongoDb";
 import User from "../../../models/User";
-
 export default async function handler(req, res) {
   const { method } = req;
   connectDB();
@@ -12,14 +11,12 @@ export default async function handler(req, res) {
         { _id: req.query.id },
         formData
       );
-      if ( !formData)
+      if (!formData)
         return res
           .status(404)
           .json({ error: "aucun utilisateur selectionner" });
-           if (!user)
-        return res
-          .status(404)
-          .json({ error: "identifiant introuvable" });
+      if (!user)
+        return res.status(404).json({ error: "identifiant introuvable" });
       user.fullname = req.body.fullname;
       await user.save();
       res.status(200).json({ user, msg: "utilisateur modifier" });
