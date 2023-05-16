@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import axios from "axios";
-
 export default function Home() {
   const [input, setInput] = useState("");
   const [singer, setSinger] = useState([]);
   const [updateUi, setUpdateUi] = useState(false);
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
