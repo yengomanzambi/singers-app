@@ -8,7 +8,7 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`/api/singers`, { fullname: input,style:input })
+      .post(`/api/singers`, { fullname: input,style:input, name:input })
       .then((res) => {
         console.log(res);
         setInput("");
