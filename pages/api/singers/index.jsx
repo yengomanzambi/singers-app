@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   //GET: http://localhost:3000/api/singers/
   if (method === "GET") {
     try {
-      const restPerPage = 1;
+      const restPerPage = 0;
       const productCount = await User.countDocuments();
 
       const apiFilters = new APIFilters(User.find(), req.query)

@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import axios from "axios";
+import ListSingers from "@/components/listsingers";
 export default function Home() {
   const [input, setInput] = useState("");
-  const [singer, setSinger] = useState([]);
+  const [singers, setSingers] = useState([]);
   const [updateUi, setUpdateUi] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`/api/singers`, { fullname: input,style:input, name:input })
+      .post(`/api/singers`, { fullname: input,style:input,name:input })
       .then((res) => {
         console.log(res);
         setInput("");
@@ -21,8 +22,9 @@ export default function Home() {
     axios
       .get(`/api/singers`)
       .then((res) => {
-        setSinger(res.data);
+        setSingers(res.data.users);
         console.log(res);
+        console.log(singers);
       })
       .catch((err) => {
         console.log(err);
@@ -40,15 +42,17 @@ export default function Home() {
           id="singer"
           className={styles.input}
           name="singer"
+          placeholder="tapez le nom de l'artiste"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
         <button className={styles.button}> Ajouter un artiste</button>
         <div className={styles.list}>
-          {singer.map((s) => (
-            <li key={s._id}>{s.fullname}</li>
+          {singers.map((singer) => (
+            <ListSingers key={singer._id} singer={singer}/>
           ))}
         </div>
+        
       </form>
     </div>
   );
