@@ -1,7 +1,6 @@
 import { Schema, model, models } from "mongoose";
 import mongoose from "mongoose";
 const UserSchema = new Schema({
- 
   name:{
     type:String,
     required:true
@@ -14,6 +13,10 @@ const UserSchema = new Schema({
     type: [String],
     required:"true"
   },
+  email:{
+    type:String,
+   
+  }
 });
 const User = models.User || model("User", UserSchema);
 export default User;

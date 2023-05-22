@@ -35,10 +35,10 @@ export default async function handler(req, res) {
   // POST: http://localhost:3000/api/singers
   if (method === "POST") {
     try {
-      const { name, fullname, style } = req.body;
-      if (!fullname || !style || !name)
+      const { name, fullname, style, email } = req.body;
+      if (!fullname || !style || !name || !email)
         return res.status(404).json({ error: "erreur d'enregistrement" });
-      const newUser = new User({ name, fullname, style });
+      const newUser = new User({ name, fullname, email,style });
       const user = await newUser.save();
       res.status(201).json(user);
     } catch (error) {

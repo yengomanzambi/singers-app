@@ -1,0 +1,10 @@
+.container{
+    color: #3e3200;
+    margin: auto;
+    border-collapse:collapse ;
+    margin-top: 50px;
+}
+.item{
+    padding: 30px;
+    
+}
