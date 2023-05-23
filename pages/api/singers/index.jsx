@@ -1,6 +1,6 @@
 import connectDB from "@/utils/mongoDb";
 import User from "../../../models/User";
-import APIFilters from "../../../utils/APIFilters";
+// import APIFilters from "../../../utils/APIFilters";
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -10,24 +10,48 @@ export default async function handler(req, res) {
   //GET: http://localhost:3000/api/singers/
   if (method === "GET") {
     try {
-      const restPerPage = 0;
-      const productCount = await User.countDocuments();
+      const {q}=req.query
+      console.log("++++",q)
+     
+      // const restPerPage = 0;
+      // const productCount = await User.countDocuments();
 
-      const apiFilters = new APIFilters(User.find(), req.query)
-        .search()
-        .filter();
-      let users = await apiFilters.query;
-      const filteredProductsCount = users.length;
-      apiFilters.pagination(restPerPage);
+      // const apiFilters = new APIFilters(User.find(), req.query)
+        // .search()
+        // .filter();
+      // let users = await apiFilters.query;
+      // const filteredProductsCount = users.length;
+      // apiFilters.pagination(restPerPage);
 
-      users = await apiFilters.query.clone();
+      // users = await apiFilters.query.clone();
+       const users = await User.find();
+
+        const keys=["name","fullname","email"]
+       const search = (dataSingers) => {
+          return dataSingers.filter(
+           (dataSinger) =>
+           keys.some(key=>dataSinger[key].toLowerCase().includes(q))
+    
+    
+    
+    //   //     // METHODE1
+    //   //       // dataSinger.name.toLowerCase().includes(query) ||
+    //   //       // dataSinger.fullname.toLowerCase().includes(query) ||
+    //   //       // dataSinger.email.toLowerCase().includes(query) ||
+    //   //       // dataSinger.style.map((item) => item.toLowerCase()).includes(query)
+           
+         );
+      };
+    
+      
       if (!users)
         return res
           .status(404)
           .json({ error, msg: "l'utilisateur n'est pas trouver" });
+
       res
         .status(201)
-        .json({ productCount, restPerPage, filteredProductsCount, users });
+        .json(users);
     } catch (error) {
       res.status(500).json({ error, msg: "erreur serveur" });
     }
