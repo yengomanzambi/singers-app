@@ -6,9 +6,9 @@ export default function Table({ dataSingers }) {
         <thead>
           <tr>
             <th>Name</th>
-            <th >Fullname</th>
-            <th >Genre</th>
-            <th >email</th>
+            <th>Fullname</th>
+            <th>Genre</th>
+            <th>email</th>
           </tr>
         </thead>
         <tbody>
