@@ -38,13 +38,13 @@ export default function Home() {
         });
     };
    
-    
+    getUser()
   }, [query]);
 
   const search = (dataSingers) => {
     return dataSingers.filter(
       (dataSinger) =>
-        keys.some((key) => dataSinger[key].toLowerCase().includes(query))
+      keys.some((key) => dataSinger[key].toLowerCase().includes(query)||dataSinger[key].toUpperCase().includes(query))
 
       // METHODE1
       // dataSinger.name.toLowerCase().includes(query) ||
@@ -57,7 +57,19 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <form action="" className={styles.form} onSubmit={handleSubmit}>
-        <input
+      <div className="mb-3">
+  <input
+    type="search"
+    className="relative m-auto block w-2/5 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+    id="exampleSearch"
+    placeholder="cherche les artistes"
+   
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    value={query}
+    onChange={(e) => setQuery(e.target.value)} />
+</div>
+        {/* <input
           type="text"
           id="singer"
           className={styles.input}
@@ -67,8 +79,8 @@ export default function Home() {
           onChange={(e) => setInput(e.target.value)}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className={styles.button}> Ajouter un artiste</button>
+        /> */}
+    
         {/* <div className={styles.list}>
           {singers.filter(singer=>singer.fullname.toLowerCase().includes(query)).map((singer)=> (
             <ListSingers key={singer._id} singer={singer}/>

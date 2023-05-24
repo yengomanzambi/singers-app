@@ -56,7 +56,7 @@ export default async function handler(req, res) {
       res.status(500).json({ error, msg: "erreur serveur" });
     }
   }
-  // POST: http://localhost:3000/api/singers
+  // register user POST: http://localhost:3000/api/singers
   if (method === "POST") {
     try {
       const { name, fullname, style, email } = req.body;
