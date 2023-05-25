@@ -13,11 +13,10 @@ export default function Login() {
     try {
       axios.post(`/api/admin/login`, { username, password });
        router.push("/admin/home");
+       console.log("bienvenue",username)
     } catch (error) {
         console.log("hello")
       setError(true);
-     
-
     }
   };
   return (

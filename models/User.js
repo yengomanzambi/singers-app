@@ -9,14 +9,21 @@ const UserSchema = new Schema({
     type: String,
     required:true
   },
+
+  email:{
+    type:String,
+   
+  },
+  password:{
+    type:String
+  },
+  passwordConfirmation:{
+    type:String
+  },
   style: {
     type: [String],
     required:"true"
   },
-  email:{
-    type:String,
-   
-  }
 });
 const User = models.User || model("User", UserSchema);
 export default User;

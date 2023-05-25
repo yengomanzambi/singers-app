@@ -1,6 +1,7 @@
 import cookie from "cookie";
 
 export default function handler(req, res) {
+  
   const { method } = req;
   if (method === "POST") {
     const { username, password } = req.body;
@@ -17,6 +18,7 @@ export default function handler(req, res) {
           path: "/",
         })
       );
+       console.log("mmm",process.env.TOKEN)
 
       res.status(200).json("reussi");
     } else {
