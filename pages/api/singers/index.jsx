@@ -10,6 +10,8 @@ export default async function handler(req, res) {
   if (method === "GET") {
     try {
       const { q } = req.query;
+      console.log("++++", q);
+
       // const restPerPage = 0;
       // const productCount = await User.countDocuments();
 
@@ -22,6 +24,7 @@ export default async function handler(req, res) {
 
       // users = await apiFilters.query.clone();
       const users = await User.find();
+
       const keys = ["name", "fullname", "email"];
       const search = (dataSingers) => {
         return dataSingers.filter(
@@ -49,10 +52,10 @@ export default async function handler(req, res) {
   // register user POST: http://localhost:3000/api/singers
   if (method === "POST") {
     try {
-      const { name, fullname,password, email } = req.body;
-      if (!fullname || !style || !name || !email,|| password)
+      const { name, fullname, style, email } = req.body;
+      if (!fullname || !style || !name || !email)
         return res.status(404).json({ error: "erreur d'enregistrement" });
-      const newUser = new User({ name, fullname, email,password });
+      const newUser = new User({ name, fullname, email, style });
       const user = await newUser.save();
       res.status(201).json(user);
     } catch (error) {

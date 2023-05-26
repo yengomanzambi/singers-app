@@ -3,7 +3,7 @@
  export default function Footer(){
     return(
 
-<footer className="bg-neutral-200 text-center text-white dark:bg-neutral-600">
+<footer className="  bg-neutral-200 text-center text-white dark:bg-neutral-200" >
   <div className="container pt-9">
     <div className="mb-9 flex justify-center">
       <a href="#!" className="mr-9 text-neutral-800 dark:text-neutral-200">
