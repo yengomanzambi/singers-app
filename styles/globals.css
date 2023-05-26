@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 
+:root {
+ 
+  --text-white: #fff;
+ 
+  --skin-color: #ec1839;
+}
+
 *{
   margin: 0;
   padding:0;
@@ -20,4 +27,27 @@ th{
 thead tr{
   background-color:  #fE333c;
   color: white;
+}
+button{
+  background-color: var(--skin-color);
+  border: none;
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 17px;
+  width: 350px;
+  margin-top: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+
+}
+button:hover{
+background-color: var(--skin-color);
+transform: scale(1.05);
+
+
 }

@@ -12,6 +12,7 @@ const UserSchema = new Schema({
 
   email:{
     type:String,
+    unique:true
    
   },
   password:{
@@ -24,6 +25,10 @@ const UserSchema = new Schema({
     type: [String],
     required:"true"
   },
+  profilePicture:{
+    type:String,
+    default:""
+  }
 });
 const User = models.User || model("User", UserSchema);
 export default User;

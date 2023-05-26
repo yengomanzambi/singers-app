@@ -10,6 +10,11 @@ margin-top: 30px;
 text-align: center;
 
 }
+.containerSinger{
+  display: flex;
+  justify-content: center;
+
+}
 
  .input{
   padding: 18px;
